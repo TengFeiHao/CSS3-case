@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .pic {
+            width: 550px;
+            height: 645px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="pic">
+    <img src="./img/bigImg0.png" alt=""/>
+</div>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script>
+  $(function () {
+      $(".pic").on("mouseenter", function (e) {
+          $('img').css({"transform" :'scale(5)',"transition":"all 2s"});
+      }).on("mousemove", function (e) {
+          var yy = $(".pic").offset().top;
+          var xx = $(".pic").offset().left;
+          var x = (e.pageX - xx)+'px' ;
+          var y = (e.pageY - yy)+'px' ;
+          $('img').css({
+              "transition":"all 0s",
+              'transform-origin-x': x,
+              'transform-origin-y': y
+//              'transform-origin':((e.pageX - $(this).offset().left) / $('.pic').width()) * 100 + '% '+((e.pageY - $(this).offset().top) / $('.pic').height()) * 100 + '%'
+
+
+          });
+      });
+      $(".pic").on("mouseleave", function () {
+          $('img').css({"transform" :'scale(1)',"transition":"all 2s"});
+      })
+  });
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
